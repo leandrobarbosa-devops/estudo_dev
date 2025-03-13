@@ -187,4 +187,4 @@ $ kubectl get pods -n wa
 
 $ kubectl get svc -n wa
 
-O arquivo Start.sh esta bem didático e possui explicações dos comandos utilizados. 
+O arquivo Start.sh possui explicações dos comandos utilizados.
