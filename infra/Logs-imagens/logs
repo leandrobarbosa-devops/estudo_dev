@@ -1,0 +1,68 @@
+leandrobarbosa@Estudos:~Testes/estudo_dev/infra$  sh Start.sh 
+Error from server (AlreadyExists): namespaces "wa" already exists
+configmap/postgres-config created
+secret/postgres-secret created
+persistentvolumeclaim/postgres-pvc created
+statefulset.apps/postgres created
+service/postgres created
+[+] Building 1.5s (10/10) FINISHED                                                                                                                           docker:default
+ => [internal] load build definition from Dockerfile.api                                                                                                               0.1s
+ => => transferring dockerfile: 232B                                                                                                                                   0.0s
+ => [internal] load metadata for docker.io/library/python:3.9-slim                                                                                                     1.3s
+ => [auth] library/python:pull token for registry-1.docker.io                                                                                                          0.0s
+ => [internal] load .dockerignore                                                                                                                                      0.0s
+ => => transferring context: 2B                                                                                                                                        0.0s
+ => [1/4] FROM docker.io/library/python:3.9-slim@sha256:d1fd807555208707ec95b284afd10048d0737e84b5f2d6fdcbed2922b9284b56                                               0.0s
+ => [internal] load build context                                                                                                                                      0.0s
+ => => transferring context: 40B                                                                                                                                       0.0s
+ => CACHED [2/4] WORKDIR /app                                                                                                                                          0.0s
+ => CACHED [3/4] COPY backend_service.py .                                                                                                                             0.0s
+ => CACHED [4/4] RUN pip install fastapi uvicorn sqlalchemy psycopg2-binary                                                                                            0.0s
+ => exporting to image                                                                                                                                                 0.0s
+ => => exporting layers                                                                                                                                                0.0s
+ => => writing image sha256:ecc909e3bf4f30f33491c5029bf30754f20048f42365850a3876428341f276eb                                                                           0.0s
+ => => naming to docker.io/tizil1987/backend:latest                                                                                                                    0.0s
+The push refers to repository [docker.io/tizil1987/backend]
+a42cbaffe856: Layer already exists 
+0f294d1714e3: Layer already exists 
+9068471f8624: Layer already exists 
+70fff1cc441b: Layer already exists 
+62f5a620d172: Layer already exists 
+4a0e2c276a6a: Layer already exists 
+5f1ee22ffb5e: Layer already exists 
+latest: digest: sha256:f2122cf8b10c5c9542cca7b354596f21aade8d7c435578c79da5dbc044eab1e6 size: 1784
+[+] Building 0.7s (10/10) FINISHED                                                                                                                           docker:default
+ => [internal] load build definition from Dockerfile.api                                                                                                               0.0s
+ => => transferring dockerfile: 251B                                                                                                                                   0.0s
+ => [internal] load metadata for docker.io/library/python:3.9-slim                                                                                                     0.6s
+ => [internal] load .dockerignore                                                                                                                                      0.0s
+ => => transferring context: 2B                                                                                                                                        0.0s
+ => [1/5] FROM docker.io/library/python:3.9-slim@sha256:d1fd807555208707ec95b284afd10048d0737e84b5f2d6fdcbed2922b9284b56                                               0.0s
+ => [internal] load build context                                                                                                                                      0.0s
+ => => transferring context: 110B                                                                                                                                      0.0s
+ => CACHED [2/5] WORKDIR /app                                                                                                                                          0.0s
+ => CACHED [3/5] COPY frontend_service.py .                                                                                                                            0.0s
+ => CACHED [4/5] COPY templates/ templates/                                                                                                                            0.0s
+ => CACHED [5/5] RUN pip install fastapi uvicorn requests jinja2                                                                                                       0.0s
+ => exporting to image                                                                                                                                                 0.0s
+ => => exporting layers                                                                                                                                                0.0s
+ => => writing image sha256:2882e442ba5be3e99b76aa6d8d52f35ff715d4038b4d823c33aec916f82888b2                                                                           0.0s
+ => => naming to docker.io/tizil1987/frontend:latest                                                                                                                   0.0s
+The push refers to repository [docker.io/tizil1987/frontend]
+ad197439a0d4: Layer already exists 
+336504d668c4: Layer already exists 
+a67f8028dddb: Layer already exists 
+9068471f8624: Layer already exists 
+70fff1cc441b: Layer already exists 
+62f5a620d172: Layer already exists 
+4a0e2c276a6a: Layer already exists 
+5f1ee22ffb5e: Layer already exists 
+latest: digest: sha256:fe35d178cc951ecec3ac71e8cc3be9eaebd08c847d737d40dac857002b8c6e9a size: 1991
+deployment.apps/backend created
+horizontalpodautoscaler.autoscaling/backend-hpa created
+service/backend created
+deployment.apps/frontend created
+horizontalpodautoscaler.autoscaling/frontend-hpa created
+secret/backend-secret created
+service/frontend created
+leandrobarbosa@Estudos:~Testes/estudo_dev/infra$ 

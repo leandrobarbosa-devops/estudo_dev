@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: tizil1987/frontend:latest
+          ports:
+            - containerPort: 8000
+          env:
+            - name: BACKEND_URL
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secret
+                  key: BACKEND_URL
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "200m"
+            limits:
+              memory: "256Mi"
+              cpu: "400m"
+          livenessProbe:
+            httpGet:
+              path: /v1/health
+              port: 3030
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /v1/health
+              port: 3030
+            initialDelaySeconds: 3
+            periodSeconds: 5
