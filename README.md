@@ -186,3 +186,5 @@ Verificação de Status: Após executar o script, é recomendável verificar o s
 $ kubectl get pods -n wa
 
 $ kubectl get svc -n wa
+
+O arquivo Start.sh esta bem didático e possui explicações dos comandos utilizados. 
